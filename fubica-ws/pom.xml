@@ -12,7 +12,7 @@
 	<name>fubica-ws</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
-	
+
 		<dependency>
 			<groupId>br.com.fubica</groupId>
 			<artifactId>fubica-core</artifactId>
