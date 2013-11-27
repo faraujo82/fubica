@@ -28,3 +28,7 @@ tmp/
 /fubica-core/*.project
 /fubica-core/*.classpath
 /fubica-core/.settings
+/fubica-ws/*
+/fubica-ws/*.project
+/fubica-ws/*.classpath
+/fubica-ws/.settings
