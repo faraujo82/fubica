@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<b:beans xmlns="http://www.springframework.org/schema/security"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:b="http://www.springframework.org/schema/beans"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						    http://www.springframework.org/schema/beans/spring-beans.xsd
+ 						    http://www.springframework.org/schema/security
+                            http://www.springframework.org/schema/security/spring-security-3.1.xsd
+                            http://www.springframework.org/schema/batch 
+                            http://www.springframework.org/schema/batch/spring-batch-2.1.xsd">
+ 
+	<http auto-config="true" access-denied-page="/negado.jsf">
+        <intercept-url pattern="/central/**" access="ROLE_ADMIN"/>
+        <intercept-url pattern="/cadastro/**" access="ROLE_ADMIN"/>
+        <intercept-url pattern="/usuario.jsf" access="ROLE_USER"/>
+        <logout invalidate-session="true" logout-success-url="/index.jsf" logout-url="/logout"/>
+        <form-login login-page="/login.jsf" authentication-failure-url="/falha.jsf"/>
+    </http>
+
+    <b:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
+        <b:property name="url" value="jdbc:mysql://scanyxrds.cdhnf3wlhtg0.us-west-1.rds.amazonaws.com:3306/scanyx" />
+        <b:property name="driverClassName" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+        <b:property name="username" value="scanyx" />
+        <b:property name="password" value="ScaNyx%2013*" />
+    </b:bean>
+
+    <authentication-manager>
+        <authentication-provider>
+        <!-- <password-encoder hash="md5" /> -->         	
+         <jdbc-user-service data-source-ref="dataSource"
+              users-by-username-query="SELECT email, senha, ativo FROM usuario WHERE email = ?" 
+              authorities-by-username-query="select u.email, p.nome from usuario u, usuario_perfil up, perfil p where u.idusuario = up.idusuario and p.idperfil = up.idperfil and u.email = ?" /> 			
+        </authentication-provider>
+    </authentication-manager>                             
+</b:beans>
