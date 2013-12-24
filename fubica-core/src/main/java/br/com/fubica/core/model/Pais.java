@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="pais")
-public class pais {
+public class Pais {
 
     @Id
     @SequenceGenerator(name = "IDPAIS", sequenceName = "PAIS_SEQUENCE", allocationSize = 1) 

@@ -15,8 +15,7 @@
 
 	<modules>
 		<module>fubica-core</module>
-		<module>fubica-ws</module>
-		<module>fubica-web</module>
+		<module>fubica-ws</module>		
 	</modules>
 
 	<dependencies>

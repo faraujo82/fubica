@@ -6,16 +6,30 @@
     <session-factory>
 		<property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://ecoletarrds.cdhnf3wlhtg0.us-west-1.rds.amazonaws.com:3306/ecoletar</property>
-        <property name="connection.username">ecoletar</property>
-        <property name="connection.password">ecOLeTar%2013*</property>
+        <property name="connection.url">jdbc:mysql://fubicards.cdhnf3wlhtg0.us-west-1.rds.amazonaws.com:3306/fubica</property>
+        <property name="connection.username">fubica</property>
+        <property name="connection.password">$FubiCa17122013%</property>
         <property name="current_session_context_class">thread</property>
         <!-- <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property> -->
 		<property name="hibernate.hbm2ddl.auto">update</property>
 		<property name="show_sql">true</property>
 		<property name="format_sql">true</property>
-		
-		<!-- <mapping class="br.com.scanyx.core.model.Perfil"/> -->
+				
+		<mapping class="br.com.fubica.core.model.Cidade"/>
+		<mapping class="br.com.fubica.core.model.OpinicaoDono"/>
+		<mapping class="br.com.fubica.core.model.Pais"/>
+		<mapping class="br.com.fubica.core.model.Permissao"/>
+		<mapping class="br.com.fubica.core.model.Pessoa"/>
+		<mapping class="br.com.fubica.core.model.PessoaFisica"/>
+		<mapping class="br.com.fubica.core.model.PessoaJuridica"/>
+		<mapping class="br.com.fubica.core.model.Regiao"/>
+		<mapping class="br.com.fubica.core.model.RequisicaoAmizade"/>
+		<mapping class="br.com.fubica.core.model.StatusAmizade"/>
+		<mapping class="br.com.fubica.core.model.TipoPessoa"/>
+		<mapping class="br.com.fubica.core.model.UnidadeFederacao"/>
+		<mapping class="br.com.fubica.core.model.Usuario"/>
+		<mapping class="br.com.fubica.core.model.VeiculoInteresse"/>
+		<mapping class="br.com.fubica.core.model.VeiculoPessoa"/>
     </session-factory>
     
 </hibernate-configuration>
