@@ -1,12 +1,13 @@
 package br.com.fubica.web.bean; 
 
-import org.springframework.context.annotation.Scope;
+import javax.faces.bean.SessionScoped;
+
 import org.springframework.stereotype.Component;
 
 import br.com.fubica.core.model.Usuario;
 
 @Component
-@Scope("session")
+@SessionScoped
 public class UsuarioBean {
 	private Usuario usuario;
 

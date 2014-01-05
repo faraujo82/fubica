@@ -1,10 +1,10 @@
 package br.com.fubica.web.bean;
 
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Controller;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 
-@Controller
-@Scope("request")
+@ManagedBean
+@RequestScoped
 public class RedirecionaBean {
 	 
 	public String usuarioPagina() {

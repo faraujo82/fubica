@@ -1,20 +1,30 @@
 package br.com.fubica.web.bean;
 
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 
 import br.com.fubica.core.model.Usuario;
 import br.com.fubica.core.service.SegurancaService;
 
-@Controller
-@Scope("request")
+@RequestScoped
+@ManagedBean
 public class AutenticacaoBean extends BaseBean implements AuthenticationProvider{
+	
+	@Autowired
+	protected SegurancaService segurancaService;	
+	@Autowired
+	protected UsuarioBean usuarioBean;
 
 	private String email;
     private String senha;
@@ -36,7 +46,7 @@ public class AutenticacaoBean extends BaseBean implements AuthenticationProvider
 	}
 
 	public String autenticar() {
-        try {
+        try {	
             Usuario usuario = segurancaService.autenticar(email, senha);
             autenticaSpringSecurity(usuario);
             usuarioBean.setUsuario(usuario);
@@ -47,9 +57,18 @@ public class AutenticacaoBean extends BaseBean implements AuthenticationProvider
         return "";
     }	
     
-    private void message(String message) {
+	private void message(String message) {
         FacesContext.getCurrentInstance().addMessage(null,
                 new FacesMessage(message));
+    }
+
+	protected void autenticaSpringSecurity(Usuario usuario) {
+        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
+        		usuario.getEmail(), null, usuario.getPermissao());
+        token.setDetails(usuario);
+ 
+        SecurityContextHolder.createEmptyContext();
+        SecurityContextHolder.getContext().setAuthentication(token);
     }
     
 	@Override
