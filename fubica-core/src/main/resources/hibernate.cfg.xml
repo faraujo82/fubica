@@ -16,7 +16,7 @@
 		<property name="format_sql">true</property>
 				
 		<mapping class="br.com.fubica.core.model.Cidade"/>
-		<mapping class="br.com.fubica.core.model.OpinicaoDono"/>
+		<mapping class="br.com.fubica.core.model.OpiniaoDono"/>
 		<mapping class="br.com.fubica.core.model.Pais"/>
 		<mapping class="br.com.fubica.core.model.Permissao"/>
 		<mapping class="br.com.fubica.core.model.Pessoa"/>

@@ -11,11 +11,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OrderBy;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.JoinColumn;
 
+import org.hibernate.annotations.OrderBy;
 import org.springframework.security.core.GrantedAuthority;
 
 @Entity
@@ -26,7 +26,7 @@ public class Permissao implements GrantedAuthority {
 
     @Id
     @SequenceGenerator(name = "IDPERMISSAO", sequenceName = "PERMISSAO_SEQUENCE", allocationSize = 1) 
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="IDPERMISSAO")
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator="IDPERMISSAO")
     @Column(name = "idpermissao")  
     private Long idPermissao;
 
@@ -38,7 +38,7 @@ public class Permissao implements GrantedAuthority {
 
     @ManyToMany(fetch=FetchType.EAGER)
     @JoinTable(name = "usuario_perfil", joinColumns = @JoinColumn(name = "id_perfil"), inverseJoinColumns = @JoinColumn(name = "id_usuario"))
-    @OrderBy(value = "idusuario")
+    @OrderBy(clause = "idusuario")
     private Set<Usuario> usuario = new HashSet<Usuario>();
 	
 	@Override

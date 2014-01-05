@@ -14,7 +14,7 @@ public class TipoPessoa {
 
     @Id
     @SequenceGenerator(name = "IDTIPOPESSOA", sequenceName = "TIPOPESSOA_SEQUENCE", allocationSize = 1) 
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="IDTIPOPESSOA")
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator="IDTIPOPESSOA")
     @Column(name = "idtipopessoa")
     private Long idTipoPessoa;
 	

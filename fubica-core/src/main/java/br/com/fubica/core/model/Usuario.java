@@ -19,6 +19,7 @@ import javax.persistence.Transient;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.annotations.OrderBy;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -30,13 +31,14 @@ public class Usuario implements UserDetails{
 
 	@Id
     @SequenceGenerator(name = "IDUSUARIO", sequenceName = "USUARIO_SEQUENCE", allocationSize = 1) 
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="IDUSUARIO")
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator="IDUSUARIO")
     @Column(name = "idusuario")
     private Long idUsuario;
 	
 	@ManyToMany(fetch=FetchType.EAGER) 
     @JoinTable(name = "usuario_perfil", joinColumns = @JoinColumn(name = "idusuario"), inverseJoinColumns = @JoinColumn(name = "idperfil"))
 	@LazyCollection(LazyCollectionOption.FALSE)
+	@OrderBy(clause = "idusuario")
 	private Set<Permissao> permissoes = new HashSet<Permissao>();   
 
     @Column(name = "login", length=50,  unique = true)

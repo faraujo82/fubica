@@ -14,7 +14,7 @@ public class RequisicaoAmizade {
 
     @Id
     @SequenceGenerator(name = "IDREQUISICAOAMIZADE", sequenceName = "REQUISICAOAMIZADE_SEQUENCE", allocationSize = 1) 
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="IDREQUISICAOAMIZADE")
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator="IDREQUISICAOAMIZADE")
     @Column(name = "idrequisicaoamizade")
     private Long idRequisicaoAmizade;
     
