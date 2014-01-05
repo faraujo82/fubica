@@ -18,11 +18,15 @@ import javax.persistence.Table;
 @Entity
 @Table(name="regiao")
 public class Regiao {
-
+/*    @Id
+    @SequenceGenerator(name = "IDPESSOA", sequenceName = "PESSOA_SEQUENCE", allocationSize = 1) 
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="IDPESSOA")
+	@Column(name="idpessoa")
+  */
     @Id
     @SequenceGenerator(name = "IDREGIAO", sequenceName = "REGIAO_SEQUENCE", allocationSize = 1) 
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="IDREGIAO")
-    @Column(name = "idregiao")
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator="IDREGIAO")
+    @Column(name="idregiao")
     private Long idRegiao;
 	
     @ManyToMany(fetch = FetchType.LAZY)

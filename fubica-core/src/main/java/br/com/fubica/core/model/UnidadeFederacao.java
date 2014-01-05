@@ -14,7 +14,7 @@ public class UnidadeFederacao {
 
     @Id
     @SequenceGenerator(name = "IDUNIDADEFEDERACAO", sequenceName = "UNIDADEFEDERACAO_SEQUENCE", allocationSize = 1) 
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="IDUNIDADEFEDERACAO")
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator="IDUNIDADEFEDERACAO")
     @Column(name = "idunidadefederacao")
     private Long idUnidadeFederacao;
 	
